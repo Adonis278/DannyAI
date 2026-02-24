@@ -1,6 +1,7 @@
 .footer {
   padding: 80px 0 40px;
   border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
 }
 
 .footer__grid {
@@ -11,28 +12,31 @@
 }
 
 .footer__brand {
-  max-width: 320px;
+  max-width: 280px;
 }
 
 .footer__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 16px;
+}
+
+.footer__logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
 .footer__logo-text {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-}
-
-.footer__logo-accent {
-  color: var(--color-accent);
+  color: var(--color-text-primary);
 }
 
 .footer__tagline {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   line-height: 1.7;
   color: var(--color-text-muted);
 }
@@ -40,10 +44,8 @@
 .footer__col-title {
   font-family: var(--font-display);
   font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-secondary);
+  font-weight: 600;
+  color: var(--color-text-primary);
   margin-bottom: 20px;
 }
 
@@ -56,7 +58,7 @@
 }
 
 .footer__link:hover {
-  color: var(--color-accent);
+  color: var(--color-text-primary);
 }
 
 .footer__bottom {
@@ -74,7 +76,7 @@
   color: var(--color-text-muted);
 }
 
-.footer__hipaa {
+.footer__compliance {
   color: var(--color-accent) !important;
   font-weight: 500;
 }

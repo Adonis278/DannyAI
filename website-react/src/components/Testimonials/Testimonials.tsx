@@ -1,28 +1,25 @@
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Quote } from 'lucide-react';
 import './Testimonials.css';
 
 const testimonials = [
   {
     name: 'Dr. Sarah Mitchell',
-    role: 'Owner, Bright Smile Dental',
+    role: 'Bright Smile Dental',
     content:
-      "Danny has completely transformed our front desk operations. We used to miss 30% of calls during busy hours — now every single call gets answered. Our booking rate increased by 40% in the first month.",
-    rating: 5,
+      "Danny has transformed our front desk. We went from missing 30% of calls to answering every single one. Booking rates increased 40% in the first month.",
   },
   {
     name: 'Maria Rodriguez',
-    role: 'Office Manager, Family Dental Care',
+    role: 'Family Dental Care',
     content:
-      "The bilingual support is a game-changer for our practice. Danny handles Spanish-speaking patients just as naturally as English speakers. Our staff can finally focus on in-office patients.",
-    rating: 5,
+      "The seamless integration with our existing systems was impressive. Staff can finally focus on in-office patients while Danny handles the phones.",
   },
   {
     name: 'Dr. James Park',
-    role: 'Lead Dentist, Modern Dental Group',
+    role: 'Modern Dental Group',
     content:
-      "I was skeptical about AI answering our phones, but Danny sounds so natural that patients don't even realize they're talking to an AI. The insurance verification feature alone saves us hours every week.",
-    rating: 5,
+      "Patients don't realize they're not talking to a person. The insurance verification alone saves us hours every week.",
   },
 ];
 
@@ -37,9 +34,9 @@ export default function Testimonials() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="testimonials__label">Testimonials</span>
           <h2 className="testimonials__title">
-            Loved by dental <span className="text-accent">professionals.</span>
+            <span className="testimonials__title-small">Trusted by practices</span>
+            <span className="testimonials__title-main">across the country.</span>
           </h2>
         </motion.div>
 
@@ -53,12 +50,8 @@ export default function Testimonials() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <div className="testimonial-card__stars">
-                {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} size={14} fill="#00D4AA" color="#00D4AA" />
-                ))}
-              </div>
-              <p className="testimonial-card__content">"{t.content}"</p>
+              <Quote size={24} className="testimonial-card__quote" />
+              <p className="testimonial-card__content">{t.content}</p>
               <div className="testimonial-card__author">
                 <div className="testimonial-card__avatar">
                   {t.name.split(' ').map(n => n[0]).join('')}
