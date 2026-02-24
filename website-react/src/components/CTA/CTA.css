@@ -1,0 +1,118 @@
+.cta {
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta__glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: rgba(0, 212, 170, 0.06);
+  border-radius: 50%;
+  filter: blur(120px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cta__card {
+  text-align: center;
+  padding: 80px 48px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.cta__subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+.cta__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
+}
+
+.cta__btn--primary {
+  background: var(--color-accent);
+  color: #000;
+}
+
+.cta__btn--primary:hover {
+  background: var(--color-accent-hover);
+  box-shadow: 0 0 40px var(--color-accent-glow-strong);
+  transform: translateY(-2px);
+}
+
+.cta__btn--secondary {
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.cta__btn--secondary:hover {
+  border-color: var(--color-border-light);
+}
+
+.cta__note {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 600px) {
+  .cta__card {
+    padding: 56px 24px;
+  }
+
+  .cta__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta__btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,274 @@
+================================================================================
+        AWS BUILDER ACCOUNT SETUP INSTRUCTIONS
+        For: Spiritus Agentic Solutions - Danny AI Project
+================================================================================
+
+This document provides step-by-step instructions for creating an AWS account
+for the Danny AI dental concierge project and granting appropriate access.
+
+================================================================================
+PART 1: CREATE AWS ORGANIZATION ACCOUNT (For Spiritus Admin)
+================================================================================
+
+STEP 1: Create AWS Account
+--------------------------
+1. Go to: https://aws.amazon.com/
+2. Click "Create an AWS Account" (top right)
+3. Enter email address for the ROOT account (company admin email)
+4. Create a strong password
+5. Choose account type: "Business"
+6. Enter company information:
+   - Company Name: Spiritus Agentic Solutions
+   - Address: [Your business address]
+   - Phone: [Business phone]
+
+STEP 2: Add Payment Method (Required for Billing)
+-------------------------------------------------
+1. After account creation, go to: AWS Console > Billing > Payment Methods
+2. Add a credit card or bank account
+3. This is required to use any AWS services beyond free tier
+
+STEP 3: Set Up Billing Alerts (Recommended)
+-------------------------------------------
+1. Go to: AWS Console > Billing > Budgets
+2. Click "Create budget"
+3. Choose "Cost budget"
+4. Set monthly budget amount (recommend: $200 for MVP testing)
+5. Set alert threshold at 80% and 100%
+6. Add notification email: adonisherome73@gmail.com
+7. This prevents surprise charges!
+
+
+================================================================================
+PART 2: CREATE IAM USER FOR DEVELOPER (adonisherome73@gmail.com)
+================================================================================
+
+STEP 1: Enable IAM Identity Center (Recommended) OR Create IAM User
+-------------------------------------------------------------------
+
+OPTION A - IAM Identity Center (Best Practice):
+1. Go to: AWS Console > IAM Identity Center
+2. Click "Enable"
+3. Choose your region: us-east-1 (N. Virginia)
+4. Go to "Users" > "Add user"
+5. Enter:
+   - Username: adonis-developer
+   - Email: adonisherome73@gmail.com
+   - First name: Adonis
+   - Last name: [Last name]
+6. Click "Next"
+7. Create a group called "DannyAI-Developers"
+8. Assign the user to this group
+
+OPTION B - Traditional IAM User:
+1. Go to: AWS Console > IAM > Users
+2. Click "Create user"
+3. Username: adonis-developer
+4. Check "Provide user access to the AWS Management Console"
+5. Select "I want to create an IAM user"
+6. Auto-generate password, require reset on first login
+7. Click "Next"
+
+STEP 2: Attach Permissions (For Either Option)
+----------------------------------------------
+Create a custom policy OR attach these AWS managed policies:
+
+For FULL OWNER ACCESS (Recommended for lead developer):
+- AdministratorAccess
+
+For LIMITED ACCESS (More secure, specific services only):
+Attach these managed policies:
+- AmazonBedrockFullAccess
+- AmazonConnect_FullAccess
+- AmazonTranscribeFullAccess
+- AmazonPollyFullAccess
+- AmazonDynamoDBFullAccess
+- AmazonS3FullAccess
+- AWSLambda_FullAccess
+- CloudWatchFullAccess
+- IAMReadOnlyAccess
+- AmazonKinesisVideoStreamsFullAccess
+
+STEP 3: Send Credentials to Developer
+-------------------------------------
+1. Download or copy the credentials
+2. Send securely to: adonisherome73@gmail.com
+3. Include:
+   - AWS Console URL: https://[account-id].signin.aws.amazon.com/console
+   - Username
+   - Temporary password
+   - Instructions to enable MFA
+
+
+================================================================================
+PART 3: ENABLE REQUIRED AWS SERVICES
+================================================================================
+
+The developer (Adonis) will need these services enabled:
+
+SERVICE 1: Amazon Bedrock (AI/LLM)
+----------------------------------
+1. Go to: AWS Console > Amazon Bedrock
+2. Region: us-east-1
+3. Click "Model access" in left sidebar
+4. Click "Manage model access"
+5. Enable these models:
+   [x] Anthropic - Claude 3.5 Sonnet
+   [x] Anthropic - Claude 3 Haiku (backup/cheaper option)
+6. Click "Save changes"
+7. Wait for access to be granted (usually instant)
+
+SERVICE 2: Amazon Connect (Phone/Voice)
+---------------------------------------
+1. Go to: AWS Console > Amazon Connect
+2. Click "Create instance"
+3. Instance name: danny-ai-dental
+4. Choose "Store users in Amazon Connect"
+5. Create admin user
+6. Enable Contact Lens (optional, for analytics)
+7. Review and create
+8. After creation, claim a phone number:
+   - Go to instance > Phone numbers
+   - Claim a number (choose US toll-free or DID)
+   - Cost: ~$1/month + usage
+
+SERVICE 3: Amazon Transcribe (Speech-to-Text)
+---------------------------------------------
+1. Already enabled by default
+2. No additional setup needed
+3. Cost: $0.024 per minute
+
+SERVICE 4: Amazon Polly (Text-to-Speech)
+----------------------------------------
+1. Already enabled by default
+2. No additional setup needed
+3. Free tier: 1 million characters/month for first 12 months
+4. After free tier: $16 per million characters (neural voices)
+
+SERVICE 5: Amazon DynamoDB (Database)
+-------------------------------------
+1. Already enabled by default
+2. Developer will create tables as needed
+3. Cost: On-demand pricing, minimal for MVP
+
+SERVICE 6: Amazon S3 (Storage)
+------------------------------
+1. Already enabled by default
+2. Developer will create buckets for:
+   - Call recordings (if consented)
+   - Transcripts
+   - Logs
+3. Enable KMS encryption for HIPAA compliance
+
+
+================================================================================
+PART 4: HIPAA COMPLIANCE SETUP (IMPORTANT)
+================================================================================
+
+Since Danny AI handles dental patient information (PHI), AWS must be configured
+for HIPAA compliance:
+
+STEP 1: Sign AWS Business Associate Addendum (BAA)
+--------------------------------------------------
+1. Go to: AWS Console > AWS Artifact
+2. Click "Agreements"
+3. Find "AWS Business Associate Addendum"
+4. Review and accept the agreement
+5. This is REQUIRED for HIPAA compliance
+
+STEP 2: Enable CloudTrail (Audit Logging)
+-----------------------------------------
+1. Go to: AWS Console > CloudTrail
+2. Click "Create trail"
+3. Name: danny-ai-audit-trail
+4. Apply to all regions: Yes
+5. Log file SSE-KMS encryption: Enable
+6. Create new S3 bucket for logs
+7. Enable CloudWatch Logs
+
+STEP 3: Configure KMS (Encryption)
+----------------------------------
+1. Go to: AWS Console > KMS
+2. Create a customer managed key
+3. Name: danny-ai-phi-key
+4. Use for encrypting:
+   - S3 buckets with recordings
+   - DynamoDB tables with patient data
+
+
+================================================================================
+PART 5: ESTIMATED COSTS (Monthly)
+================================================================================
+
+For MVP testing with ~500 calls/month (2,500 minutes):
+
+Service                          | Estimated Cost
+---------------------------------|---------------
+Amazon Connect (voice)           | $45.00
+Amazon Transcribe               | $60.00
+Amazon Polly                    | $16-32.00
+Amazon Bedrock (Claude)         | $15-20.00
+DynamoDB                        | $5.00
+S3 Storage                      | $2.00
+Lambda                          | $2.00
+CloudWatch                      | $5.00
+Phone Number                    | $1.00
+---------------------------------|---------------
+TOTAL ESTIMATED                 | $150-170/month
+
+Note: First month may be lower due to free tiers.
+
+
+================================================================================
+PART 6: CREDENTIALS TO SHARE WITH DEVELOPER
+================================================================================
+
+After setup, send the following to adonisherome73@gmail.com:
+
+[ ] AWS Account ID: ____________
+[ ] Console Sign-in URL: https://____________.signin.aws.amazon.com/console
+[ ] IAM Username: adonis-developer
+[ ] Temporary Password: ____________ (require change on first login)
+[ ] Region: us-east-1
+
+[ ] Amazon Connect Instance URL: ____________
+[ ] Amazon Connect Phone Number: ____________
+
+SECURITY REMINDERS:
+- Enable MFA on the developer account
+- Never share root account credentials
+- Rotate access keys every 90 days
+- Review CloudTrail logs monthly
+
+
+================================================================================
+PART 7: QUICK REFERENCE - AWS CONSOLE LINKS
+================================================================================
+
+Main Console:       https://console.aws.amazon.com/
+Bedrock:           https://console.aws.amazon.com/bedrock/
+Connect:           https://console.aws.amazon.com/connect/
+Transcribe:        https://console.aws.amazon.com/transcribe/
+Polly:             https://console.aws.amazon.com/polly/
+DynamoDB:          https://console.aws.amazon.com/dynamodb/
+S3:                https://console.aws.amazon.com/s3/
+Lambda:            https://console.aws.amazon.com/lambda/
+IAM:               https://console.aws.amazon.com/iam/
+Billing:           https://console.aws.amazon.com/billing/
+Budgets:           https://console.aws.amazon.com/billing/home#/budgets
+
+
+================================================================================
+CONTACT
+================================================================================
+
+Developer Contact: adonisherome73@gmail.com
+Project: Danny AI - Dental Practice Voice Concierge
+Company: Spiritus Agentic Solutions
+
+If you have questions about this setup, contact the developer above.
+
+
+================================================================================
+                    END OF SETUP INSTRUCTIONS
+================================================================================

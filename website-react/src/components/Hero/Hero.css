@@ -1,0 +1,343 @@
+.hero {
+  position: relative;
+  padding: 160px 0 120px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black, transparent);
+}
+
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.hero__glow--1 {
+  width: 600px;
+  height: 600px;
+  background: rgba(0, 212, 170, 0.08);
+  top: -200px;
+  right: -100px;
+}
+
+.hero__glow--2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(0, 212, 170, 0.05);
+  bottom: -100px;
+  left: -100px;
+}
+
+.hero__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--color-accent-glow);
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  width: fit-content;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+}
+
+.hero__title-accent {
+  background: linear-gradient(135deg, #00D4AA, #00E6BB, #00FFD0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__subtitle {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 520px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
+}
+
+.hero__btn--primary {
+  background: var(--color-accent);
+  color: #000;
+}
+
+.hero__btn--primary:hover {
+  background: var(--color-accent-hover);
+  box-shadow: 0 0 40px var(--color-accent-glow-strong);
+  transform: translateY(-2px);
+}
+
+.hero__btn--secondary {
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.hero__btn--secondary:hover {
+  border-color: var(--color-border-light);
+  background: var(--color-bg-card);
+}
+
+.hero__social-proof {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 12px;
+}
+
+.hero__avatars {
+  display: flex;
+}
+
+.hero__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--color-bg);
+  overflow: hidden;
+  margin-left: -8px;
+}
+
+.hero__avatar:first-child {
+  margin-left: 0;
+}
+
+.hero__social-text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.hero__social-text strong {
+  color: var(--color-text-secondary);
+}
+
+/* Phone mockup */
+.hero__phone {
+  width: 320px;
+  margin: 0 auto;
+  background: #111113;
+  border-radius: 40px;
+  border: 2px solid var(--color-border);
+  padding: 12px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 25px 60px rgba(0,0,0,0.5),
+    0 0 80px var(--color-accent-glow);
+  position: relative;
+}
+
+.hero__phone-notch {
+  width: 120px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 16px 16px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__phone-screen {
+  background: var(--color-bg);
+  border-radius: 28px;
+  padding: 20px 16px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__phone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 16px;
+}
+
+.hero__phone-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.hero__phone-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0, 212, 170, 0); }
+}
+
+.hero__phone-time {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__phone-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.hero__msg {
+  padding: 12px 14px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  max-width: 88%;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.hero__msg--ai {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.hero__msg--user {
+  background: var(--color-accent);
+  color: #000;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+.hero__msg-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero__msg-typing {
+  display: flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.hero__msg-typing span {
+  width: 6px;
+  height: 6px;
+  background: var(--color-text-muted);
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.hero__msg-typing span:nth-child(2) { animation-delay: 0.2s; }
+.hero__msg-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 968px) {
+  .hero__container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .hero__badge { margin: 0 auto; }
+  .hero__subtitle { margin: 0 auto; }
+  .hero__actions { justify-content: center; }
+  .hero__social-proof { justify-content: center; }
+
+  .hero__visual {
+    order: -1;
+  }
+
+  .hero__phone {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 140px 0 80px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
