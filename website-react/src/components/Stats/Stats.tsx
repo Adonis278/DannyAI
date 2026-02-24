@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import './Stats.css';
 
 const stats = [
-  { value: '99.8%', label: 'Call Answer Rate' },
-  { value: '<3s', label: 'Average Response Time' },
-  { value: '85%', label: 'Calls Resolved Without Staff' },
-  { value: '24/7', label: 'Always Available' },
+  { value: '99.8%', label: 'Call answer rate' },
+  { value: '<3s', label: 'Average response' },
+  { value: '85%', label: 'Resolved automatically' },
+  { value: '24/7', label: 'Availability' },
 ];
 
 export default function Stats() {

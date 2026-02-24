@@ -1,23 +1,29 @@
 :root {
   --color-bg: #09090B;
-  --color-bg-secondary: #111113;
-  --color-bg-card: #16161A;
-  --color-bg-elevated: #1C1C21;
-  --color-bg-input: #1E1E23;
-  --color-border: #27272A;
-  --color-border-light: #3F3F46;
+  --color-bg-secondary: #0D0D10;
+  --color-bg-card: #111116;
+  --color-bg-elevated: #16161C;
+  --color-bg-input: #1A1A21;
+  --color-border: #1E1E26;
+  --color-border-light: #2A2A35;
 
-  --color-text-primary: #FAFAFA;
-  --color-text-secondary: #A1A1AA;
-  --color-text-muted: #71717A;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #9CA3AF;
+  --color-text-muted: #6B7280;
 
-  --color-accent: #00D4AA;
-  --color-accent-hover: #00E6BB;
-  --color-accent-glow: rgba(0, 212, 170, 0.12);
-  --color-accent-glow-strong: rgba(0, 212, 170, 0.25);
-  --color-accent-dark: #009977;
+  /* Blue gradient from logo - dark blue to cyan */
+  --color-accent: #0B7CDA;
+  --color-accent-hover: #1E90FF;
+  --color-accent-cyan: #00C6D4;
+  --color-accent-glow: rgba(11, 124, 218, 0.12);
+  --color-accent-glow-strong: rgba(11, 124, 218, 0.25);
+  --color-accent-dark: #0B4DA2;
+  
+  /* Gradient for special elements */
+  --gradient-primary: linear-gradient(135deg, #0B4DA2 0%, #0B7CDA 50%, #00C6D4 100%);
+  --gradient-text: linear-gradient(135deg, #0B7CDA, #00C6D4);
 
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   --section-padding: 120px 0;

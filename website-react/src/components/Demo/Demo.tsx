@@ -288,12 +288,12 @@ export default function Demo() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="demo__label">Live Demo</span>
           <h2 className="demo__title">
-            Talk to Danny <span className="text-accent">right now.</span>
+            <span className="demo__title-small">Try it yourself</span>
+            <span className="demo__title-main">Talk to Danny.</span>
           </h2>
           <p className="demo__subtitle">
-            Experience what your patients will hear. Try asking about appointments, insurance, or office hours.
+            Experience what your patients will hear. Ask about appointments, insurance, or office hours.
           </p>
 
           {/* Mode toggle */}
